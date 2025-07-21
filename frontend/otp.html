@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>OTP Verification</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-image: url("pbg.jpg");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .otp-box {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 400px;
+    }
+    .otp-box h2 {
+      color: #1565c0;
+      margin-bottom: 20px;
+    }
+    .otp-inputs {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 20px;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+    .otp-inputs input {
+      width: 50px;
+      height: 60px;
+      font-size: 24px;
+      text-align: center;
+      border-radius: 10px;
+      border: 2px solid #90caf9;
+      outline: none;
+    }
+    .btn {
+      background-color: #1565c0;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin: 5px;
+    }
+    .btn:hover {
+      background-color: #0d47a1;
+    }
+    .btn:disabled {
+      background-color: #90caf9;
+      cursor: not-allowed;
+    }
+    .success { color: green; margin-top: 10px; }
+    .error { color: red; margin-top: 10px; }
+    .resend-container {
+      margin-top: 10px;
+    }
+    #resend-timer {
+      color: #1565c0;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="otp-box">
+    <img src="uni vote[1].png" width="80" alt="IIT Patna Logo" style="border-radius: 50%;">
+    <h2>Enter 6-Digit OTP</h2>
+    <div class="otp-inputs">
+      <input type="text" id="otp1" maxlength="1" autofocus>
+      <input type="text" id="otp2" maxlength="1">
+      <input type="text" id="otp3" maxlength="1">
+      <input type="text" id="otp4" maxlength="1">
+      <input type="text" id="otp5" maxlength="1">
+      <input type="text" id="otp6" maxlength="1">
+    </div>
+    <button class="btn" id="verify-otp-btn">Verify</button>
+    <div class="resend-container">
+      <button class="btn" id="resend-otp-btn">Resend OTP</button>
+      <div id="resend-timer" aria-live="polite"></div>
+    </div>
+    <div id="message" aria-live="polite"></div>
+  </div>
+
+  <script type="module" src="./scripts/otp.js"></script>
+</body>
+</html>

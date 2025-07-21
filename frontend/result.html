@@ -1,0 +1,399 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Result - UNI-VOTE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.jsdelivr.net/npm/ethers@5/dist/ethers.umd.min.js"></script>
+    <link rel="stylesheet" href="result.css">
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://kit.fontawesome.com/8f68262e98.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <header>
+        <div class="logo"><img src="Frame 41.svg"></div>
+        <div class="gwei-indicator">
+            <div class="blinking-dot"></div>
+            <div class="indicator-text">
+                Gwei <span class="version">1.05</span>
+            </div>
+        </div>
+
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="governance.html">Governance</a>
+            <a href="vote.html">Vote</a>
+            <a href="result.html">Track vote</a>
+
+        </nav>
+        <div class="user-profile">
+            <button id="connectWalletBtn" style="margin-bottom: 1rem;"> Connect Wallet</button>
+
+        </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="main-container">
+            <div class="track-inputs">
+                <div class="input-group">
+                    <input type="text" placeholder="Paste Transaction hash here">
+                    <button id="checkBtn">Check on Base scan</button>
+                </div>
+ 
+            </div>
+
+            <div class="stats-grid">
+                <div class="stats-card">
+                    <div class="card">
+                        <h3>Live Stats</h3>
+                        <div id="statusMessage"></div>
+                        
+                        <p id="electionIdDisplay">ID: ...</p>
+                        <hr>
+                       
+
+                    </div>
+                    <div class="card">
+                        <h3>Time</h3>
+                        <h2 id="electionTopic"></h2>
+                        <p id="electionIdDisplay"></p>
+                        <p id="electionEndTime"></p>
+                        <p id="countdownTimer"></p>
+
+ 
+                <div class="card results-card">
+                    <div class="container">
+                        <h3>Election Result</h3>
+                        
+                          <div id="resultsContainer">
+                        </div>
+                         <div id="resultsContainer"></div>
+                    </div>
+
+
+                </div>
+            </div>
+ 
+
+
+
+
+
+
+
+            <div id="txn-stepper" class="txn-stepper mt-4">
+                <div class="step" id="step-1">
+                    <div class="circle">
+                        <svg class="checkmark" viewBox="0 0 24 24">
+                            <circle class="checkmark__circle" cx="12" cy="12" r="10" />
+                            <path class="checkmark__check" d="M7 13l3 3 5-6" />
+                        </svg>
+                        <span class="circle-number">1</span>
+                    </div>
+                    <div class="label">
+                        Transaction<br>passed ZKP circuit<br>
+                        <span class="timestamp" id="ts-1"></span>
+                    </div>
+                </div>
+                <div class="line"></div>
+                <div class="step" id="step-2">
+                    <div class="circle">
+                        <svg class="checkmark" viewBox="0 0 24 24">
+                            <circle class="checkmark__circle" cx="12" cy="12" r="10" />
+                            <path class="checkmark__check" d="M7 13l3 3 5-6" />
+                        </svg>
+                        <span class="circle-number">2</span>
+                    </div>
+                    <div class="label">
+                        Transaction signed<br>
+                        <span class="timestamp" id="ts-2"></span>
+                    </div>
+                </div>
+                <div class="line"></div>
+                <div class="step" id="step-3">
+                    <div class="circle">
+                        <svg class="checkmark" viewBox="0 0 24 24">
+                            <circle class="checkmark__circle" cx="12" cy="12" r="10" />
+                            <path class="checkmark__check" d="M7 13l3 3 5-6" />
+                        </svg>
+                        <span class="circle-number">3</span>
+                    </div>
+                    <div class="label">
+                        Waiting for block<br>confirmation<br>
+                        <span class="timestamp" id="ts-3"></span>
+                    </div>
+                </div>
+                <div class="line"></div>
+                <div class="step" id="step-4">
+                    <div class="circle">
+                        <svg class="checkmark" viewBox="0 0 24 24">
+                            <circle class="checkmark__circle" cx="12" cy="12" r="10" />
+                            <path class="checkmark__check" d="M7 13l3 3 5-6" />
+                        </svg>
+                        <span class="circle-number">4</span>
+                    </div>
+                    <div class="label">
+                        Transaction<br>confirmed successfully<br>
+                        <span class="timestamp" id="ts-4"></span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+
+        </div>
+        </div>
+        </div>
+    </main>
+    <footer class="footer" style="width: 100%;">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Explore</h3>
+                <ul>
+                    <li><a href="team.html">Team</a></li>
+                    <li><a href="roadmap.html">Roadmap</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Elsewhere</h3>
+                <ul>
+                    <li><a href="https://www.linkedin.com/company/uni-vote/?viewAsMember=true">LinkedIn</a></li>
+                    <li><a href="https://github.com/amitsikdar37/univote">Github</a></li>
+                    <li><a href="https://web.telegram.org/k/#-2512359544">Telegram</a></li>
+
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Product</h3>
+                <ul>
+                    <li><a href="features.html">Features</a></li>
+                     
+                </ul>
+            </div>
+            <div class="footer-logo">
+                <img src="uni-vote[1].png" alt="UNI-VOTE Logo" class="footer-logo-img">
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Welcome. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+            <div class="footer-social">
+                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="#"><i class="fa-brands fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script type="module" src="./scripts/result.js"></script>
+
+
+
+</body>
+
+</html> -->
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UNI-VOTE</title>
+  <link rel="icon" type="png" href="uni-vote[1].png" />
+
+
+  <!-- Ethers.js for blockchain interaction -->
+  <script src="https://cdn.jsdelivr.net/npm/ethers@5/dist/ethers.umd.min.js"></script>
+
+  <!-- Chart.js for Graph -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Font and Styling -->
+  <link rel="stylesheet" href="result.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/8f68262e98.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo"><img src="Frame 41.svg" alt="UNI-VOTE" /></div>
+    <div class="gwei-indicator">
+      <div class="blinking-dot"></div>
+      <div class="indicator-text">Gwei <span class="version">1.05</span></div>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="governance.html">Governance</a>
+      <a href="vote.html">Vote</a>
+      <a href="result.html">Track vote</a>
+    </nav>
+    <div class="user-profile">
+      <button id="connectWalletBtn">Connect Wallet</button>
+    </div>
+  </header>
+
+  <!-- Main Body -->
+  <main>
+    <div class="main-container">
+      <!-- Optional TXN input section -->
+      <div class="track-inputs">
+        <div class="input-group">
+          <input type="text" placeholder="Paste Transaction hash here" />
+          <button>Check on Base scan</button>
+        </div>
+      </div>
+
+      <!-- Stats Section -->
+      <div class="stats-grid">
+        <!-- Live Stats -->
+        <div class="stats-card">
+          <div class="card">
+            <h3>Live Stats</h3>
+            <div id="statusMessage"></div>
+            <p id="electionIdDisplay">ID: ...</p>
+            <hr />
+          </div>
+          <div class="card">
+            <h3>Time</h3>
+            <h2 id="electionTopic"></h2>
+            <p id="electionEndTime"></p>
+            <p id="countdownTimer"></p>
+          </div>
+        </div>
+
+        <!-- Graph + Result Section -->
+        <div class="card results-card">
+          <div class="container">
+            <h3>Election Result</h3>
+            <!-- Yahaan graph canvas hai -->
+            <div id="resultsContainer">
+              <canvas id="resultsChart" height="200" width="100"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stepper (Txn Status steps) -->
+      <div id="txn-stepper" class="txn-stepper mt-4">
+        <div class="step" id="step-1">
+          <div class="circle">
+            <svg class="checkmark" viewBox="0 0 24 24">
+              <circle class="checkmark__circle" cx="12" cy="12" r="10" />
+              <path class="checkmark__check" d="M7 13l3 3 5-6" />
+            </svg>
+            <span class="circle-number">1</span>
+          </div>
+          <div class="label">Transaction<br />passed ZKP circuit</div>
+        </div>
+        <div class="line"></div>
+        <div class="step" id="step-2">
+          <div class="circle">
+            <svg class="checkmark" viewBox="0 0 24 24">
+              <circle class="checkmark__circle" cx="12" cy="12" r="10" />
+              <path class="checkmark__check" d="M7 13l3 3 5-6" />
+            </svg>
+            <span class="circle-number">2</span>
+          </div>
+          <div class="label">Transaction signed</div>
+        </div>
+        <div class="line"></div>
+        <div class="step" id="step-3">
+          <div class="circle">
+            <svg class="checkmark" viewBox="0 0 24 24">
+              <circle class="checkmark__circle" cx="12" cy="12" r="10" />
+              <path class="checkmark__check" d="M7 13l3 3 5-6" />
+            </svg>
+            <span class="circle-number">3</span>
+          </div>
+          <div class="label">Waiting for block confirmation</div>
+        </div>
+        <div class="line"></div>
+        <div class="step" id="step-4">
+          <div class="circle">
+            <svg class="checkmark" viewBox="0 0 24 24">
+              <circle class="checkmark__circle" cx="12" cy="12" r="10" />
+              <path class="checkmark__check" d="M7 13l3 3 5-6" />
+            </svg>
+            <span class="circle-number">4</span>
+          </div>
+          <div class="label">Transaction confirmed successfully</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" style="width: 100%;">
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>Explore</h3>
+        <ul>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="roadmap.html">Roadmap</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Elsewhere</h3>
+        <ul>
+          <li><a href="https://www.linkedin.com/company/uni-vote">LinkedIn</a></li>
+          <li><a href="https://github.com/amitsikdar37/univote">Github</a></li>
+          <li><a href="https://web.telegram.org/k/#-2512359544">Telegram</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Product</h3>
+        <ul>
+          <li><a href="features.html">Features</a></li>
+        </ul>
+      </div>
+      <div class="footer-logo">
+        <img src="uni-vote[1].png" alt="UNI-VOTE Logo" class="footer-logo-img" />
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Welcome. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+      <div class="footer-social">
+        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="#"><i class="fa-brands fa-github"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS file jo Graph banayega -->
+  <script type="module" src="./scripts/result.js"></script>
+</body>
+</html>
+

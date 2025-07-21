@@ -1,0 +1,681 @@
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNI-VOTE Interface</title>
+    <script src="https://cdn.jsdelivr.net/npm/ethers@5/dist/ethers.umd.min.js"></script>
+    <style>
+        /* Google Fonts Import */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        /* CSS Variables for colors and styles */
+        :root {
+            --background-gradient: linear-gradient(135deg, #1e0a5c, #3d1b8c, #2c0b6b);
+            --card-background: rgba(255, 255, 255, 0.1);
+            --card-border: 1px solid rgba(255, 255, 255, 0.2);
+            --text-color: #f0f0f0;
+            --text-color-secondary: #b3b3b3;
+            --primary-button-gradient: linear-gradient(90deg, #3a8dfe, #6b47ff);
+            --green-color: #28a745;
+            --white-color: #fff;
+            --font-family: 'Poppins', sans-serif;
+        }
+
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            /* background: var(--background-gradient); */
+            /* background: linear-gradient(188.64deg, #E8EDFF 39.84%, #183EC2 92.29%); */
+            background: linear-gradient(188.64deg, #E8EDFF 39.84%, #183EC2 92.29%);
+            ;
+
+
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 3rem;
+            width: 100%;
+        }
+
+        header .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            background: linear-gradient(90deg, #a48eff, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        header nav a {
+            color: black;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+            font-weight:bolder;
+        }
+
+
+        header nav a:hover {
+            color: var(--white-color);
+        }
+
+        header .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .connect-wallet-btn {
+            background: var(--card-background);
+            border: var(--card-border);
+            color: var(--white-color);
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .connect-wallet-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .profile-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--card-background);
+            border: var(--card-border);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            background-color: #020202;
+        }
+
+        .profile-icon svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--white-color);
+        }
+
+        /* Main Content */
+        main {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* padding: 2rem; */
+            
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            width: 100%;
+            max-width: 1200px;
+            /* background:
+            rgba(239, 240, 246, 0.45); */
+
+            background-color: #D8DCEA;
+            border: 13px solid #E2E4EF;
+             padding: 30px 20px;
+             border-radius: 25px;
+
+        }
+
+        /* Glassmorphism Card Style */
+        .card {
+            background: var(--card-background);
+            border: var(--card-border);
+            border-radius: 20px;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        /* Left Panel */
+        .left-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+
+
+        }
+
+        .voting-topic h2 {
+            font-weight: 500;
+        }
+
+        .details .detail-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+
+            color: #020202;
+        }
+
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 44px;
+            height: 24px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #333;
+            transition: .4s;
+            border-radius: 24px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked+.slider {
+            background-color: var(--green-color);
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(20px);
+        }
+
+        .options h3 {
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .option-btn {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-color);
+            padding: 1rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 0.8rem;
+            cursor: pointer;
+            transition: background-color 0.3s, border-color 0.3s;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .option-btn:hover {
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        /* Style for selected option from second code */
+        .option-btn.selected {
+            background: rgba(107, 71, 255, 0.3);
+            border-color: #6b47ff;
+        }
+
+        /* Hiding the static transaction status card as its logic is not provided */
+        .transaction-status-card {
+            display: none;
+        }
+
+        /* Right Panel */
+        .right-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .time-left,
+        .results {
+            text-align: center;
+        }
+
+        .time-left h3,
+        .results h3 {
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        .timer-circle,
+        .results-circle {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            margin: 0 auto;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .timer-circle {
+            background: conic-gradient(#6b47ff 360deg, #333 0deg);
+        }
+
+        .results-circle {
+            background: conic-gradient(#3a8dfe 277.2deg, #ff4b4b 277.2deg 360deg);
+            /* 77% * 3.6 = 277.2deg */
+        }
+
+        .circle-inner {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            background: #2a1a5e;
+            /* slightly darker than gradient for depth */
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        .results-legend {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .legend-color {
+            width: 15px;
+            height: 15px;
+            border-radius: 3px;
+        }
+
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .submit-btn {
+            background: var(--primary-button-gradient);
+            border: none;
+            color: var(--white-color);
+            padding: 1rem;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .submit-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* Disabled state style from second code */
+        .submit-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .link-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .link-btn {
+            flex-grow: 1;
+            background: var(--card-background);
+            border: var(--card-border);
+            color: var(--text-color);
+            padding: 0.8rem;
+            border-radius: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .link-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Status message style from second code */
+        #statusMessage {
+            margin-top: 1rem;
+            text-align: center;
+            min-height: 22px;
+            word-wrap: break-word;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            background: #0d0d1a;
+            padding: 3rem;
+            margin-top: 2rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-column {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .footer-column h4 {
+            color: var(--white-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-column a {
+            color: var(--text-color-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: var(--white-color);
+        }
+
+        .footer-logo {
+            width: 100px;
+            height: 100px;
+            background: var(--primary-button-gradient);
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            box-shadow: 0 0 20px rgba(107, 71, 255, 0.5);
+        }
+
+        .footer-logo-text {
+            font-weight: 700;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 1024px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+
+            header {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            header,
+            main,
+            footer {
+                padding: 1.5rem;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <img src="Frame 41.svg"width="150" height="32">
+        <!-- <div class="logo">UNI-VOTE</div> -->
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Governance</a>
+            <a href="#">Vote</a>
+            <a href="#">Track Vote</a>
+            <a href="#">Help</a>
+        </nav>
+        <div class="header-right">
+            <button class="connect-wallet-btn" id="connectWalletBtn">Connect wallet</button>
+            <div class="profile-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <path
+                        d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
+                </svg>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="main-grid">
+            <div class="left-panel">
+                <div class="card voting-topic" style="background-color: hsl(0, 14%, 99%);border: 10px solid #E2E4EF; padding: 15px; border-radius: 25px;">
+                    <h2 id="electionTopic" style="text-align: center; margin-bottom: 0.5rem;color: #020202;">Loading
+                        Election...</h2>
+                    <p style="text-align: center; color: var(--text-color-secondary); margin-bottom: 1rem;color: #020202;background-color: hsl(0, 14%, 99%); "
+                        id="electionIdDisplay">ID: ...</p>
+                </div>
+
+                <div class="card details" style="background-color: hsl(0, 14%, 99%);border: 10px solid #E2E4EF; padding: 15px; border-radius: 25px;">
+                    <div class="detail-item">
+                        <span>Election Id</span>
+                        <span>....</span>
+                    </div>
+                    <div class="detail-item">
+                        <span>Count Till Now</span>
+                        <span>00</span>
+                    </div>
+                    <hr style="border-color: rgba(255,255,255,0.1); margin: 1.5rem 0;">
+                    <div class="detail-item">
+                        <span>Only Recipients of XYZ.io</span>
+                        <label class="toggle-switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="detail-item">
+                        <span>Unlockfts must be older than 30 days</span>
+                        <label class="toggle-switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="detail-item">
+                        <span>Those who connected their X</span>
+                        <label class="toggle-switch">
+                            <input type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="detail-item">
+                        <span>User's those who connected their google account</span>
+                        <label class="toggle-switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="card options" style="color: #020202;background-color: hsl(0, 14%, 99%); border: 10px solid #E2E4EF; padding: 15px; border-radius: 25px;">
+                    <h3>Choose from options</h3>
+                    <div id="optionsContainer">
+                    </div>
+                </div>
+
+                <div class="card transaction-status-card">
+                </div>
+            </div>
+
+            <!-- <div class="right-panel"
+                <div class="card time-left" style="background-color: hsl(0, 14%, 99%); color: #020202; ">
+                    <h3>Time Left</h3>
+                    <div class="timer-circle">
+                        <div class="circle-inner" id="timer">
+                            00:00
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card results" style="background-color: hsl(0, 14%, 99%);color: #020202; ">
+                    <h3>Results</h3>
+                    <div class="results-circle">
+                        <div class="circle-inner">
+                            00
+                        </div>
+                    </div>
+                    <div class="results-legend">
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: #3a8dfe;"></div>
+                            <span>Colors</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: #ff4b4b;"></div>
+                            <span>Used colors</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="submit-btn" id="submitVoteBtn" style="display: none;" disabled>Select a
+                        Candidate</button>
+                    <div id="statusMessage"></div>
+                    <div class="link-buttons" ">
+                        <div class=" link-btn" style="background-color: hsl(0, 14%, 99%);color: #020202;">Copy result
+                        Link</div>
+                    <div class="link-btn" style="background-color: hsl(0, 14%, 99%);color: #020202;">Track Txn</div>
+                </div>
+            </div> -->
+              <div class="right-panel">
+                <div class="card time-left"style="background-color: hsl(0, 14%, 99%); color: #020202;border: 10px solid #E2E4EF; padding: 15px; border-radius: 25px;">
+                    <h3>Time Left</h3>
+                    <div class="timer-circle">
+                        <div class="circle-inner" id="timer">
+                            00:00
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card results"style="background-color: hsl(0, 14%, 99%); color: #020202;border: 10px solid #E2E4EF; padding: 15px; border-radius: 25px;">
+                    <h3>Results</h3>
+                    <div class="results-circle">
+                        <div class="circle-inner">
+                            77%
+                        </div>
+                    </div>
+                    <div class="results-legend">
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: #3a8dfe;"></div>
+                            <span>Colors</span>
+                        </div>
+                         <div class="legend-item">
+                            <div class="legend-color" style="background: #ff4b4b;"></div>
+                            <span>Used colors</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="submit-btn" id="submitVoteBtn" style="display: none;" disabled>Select a Candidate</button>
+                    <div id="statusMessage"></div>
+                    <div class="link-buttons">
+                        <!-- <div class="link-btn"style="background-color: hsl(0, 14%, 99%); color: #020202;border: 10px solid #E2E4EF; padding: 15px; border-radius: 25px;">Copy result Link</div> -->
+
+<!-- <div class="link-btn"style="background-color: hsl(0, 14%, 99%); color: #020202;border: 10px solid #E2E4EF; padding: 15px; border-radius: 25px;">Copy result Link</div> -->
+
+<div id="copyResultLinkBtn" class="link-btn" style="background-color: hsl(0, 14%, 99%); color: #020202;border: 10px solid #E2E4EF; padding: 15px; border-radius: 25px;">Copy Result Link</div>
+
+
+
+
+                        <div class="link-btn"style="background-color: hsl(0, 14%, 99%); color: #020202;border: 10px solid #E2E4EF; padding: 15px; border-radius: 25px;">Track Txn</div>
+                    </div>
+                </div>
+        </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h4>Explore</h4>
+                <a href="#">Team</a>
+                <a href="#">Roadmap</a>
+                <a href="#">About</a>
+            </div>
+            <div class="footer-column">
+                <h4>Elsewhere</h4>
+                <a href="#">LinkedIn</a>
+                <a href="#">Github</a>
+                <a href="#">Telegram</a>
+            </div>
+            <div class="footer-column">
+                <h4>Product</h4>
+                <a href="#">Features</a>
+                <a href="#">Integrations</a>
+                <a href="#">Resources</a>
+            </div>
+            <div class="footer-logo">
+                <img src="uni-vote[1].png"
+                    alt="logo-icon"  style="width: 100px; height: 100px; border-radius: 15px;" />
+                <!-- <span class="footer-logo-text">UNI-VOTE</span> -->
+            </div>
+        </div>
+        <div
+            style="text-align: center; color: var(--text-color-secondary); font-size: 0.8rem; margin-top: 3rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem;">
+            © 2025 UNI-VOTE . All right reserved &nbsp;&nbsp;&nbsp; Privacy Policy &nbsp;&nbsp;&nbsp; Terms of Service
+        </div>
+    </footer>
+    <script type="module" src="./scripts/voting.js"></script>
+
+    
+</body>
+
+</html>

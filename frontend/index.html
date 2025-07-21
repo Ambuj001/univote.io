@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UNI-VOTE</title>
+  <script src="https://kit.fontawesome.com/8f68262e98.js" crossorigin="anonymous"></script>
+  <link rel="icon" type="png" href="uni-vote[1].png" />
+
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Inter:400,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+
+<body>
+  <div>
+    <nav id="main-nav" class="navbar">
+      <div class="navbar-logo" id="logo-univote">
+        <svg xmlns="http://www.w3.org/2000/svg" width="150" height="32" viewBox="0 0 150 32" fill="none">
+          <path
+            d="M5.46858 0.313965V13.4351C5.46858 14.7487 5.79305 15.7624 6.44563 16.4763C7.10551 17.183 8.07891 17.5328 9.36221 17.5328C10.6346 17.5328 11.6116 17.183 12.2934 16.4763C12.9715 15.7624 13.3142 14.7487 13.3142 13.4351V0.313965H18.7827V13.4066C18.7827 15.3698 18.3526 17.0296 17.4995 18.3895C16.6536 19.7423 15.5089 20.7596 14.0725 21.4449C12.6324 22.1303 11.0283 22.4729 9.26013 22.4729C7.49924 22.4729 5.92065 22.1374 4.52069 21.4592C3.12803 20.7846 2.02702 19.7673 1.21038 18.4038C0.401029 17.0331 0 15.3698 0 13.4066V0.313965H5.46858Z"
+            fill="black" />
+          <path
+            d="M41.8701 22.2587H36.4161L27.2726 8.72351V22.2587H21.8186V0.313965H27.2726L36.4161 13.9063V0.313965H41.8701V22.2587Z"
+            fill="black" />
+          <path d="M50.4904 0.313965V22.2587H45.0364V0.313965H50.4904Z" fill="black" />
+          <path d="M67.3812 9.06616V13.5065H53.3379V9.06616H67.3812Z" fill="black" />
+          <path
+            d="M92.4264 0.313965L84.4787 22.2587H77.6393L69.6917 0.313965H75.4956L81.0517 16.8761L86.6515 0.313965H92.4264Z"
+            fill="black" />
+          <path
+            d="M104.5 22.473C102.389 22.473 100.453 21.9983 98.6962 21.0452C96.9462 20.0851 95.5499 18.743 94.5109 17.0189C93.4791 15.2985 92.9651 13.3638 92.9651 11.2222C92.9651 9.0734 93.4791 7.14592 94.5109 5.43973C95.5499 3.72641 96.9462 2.39502 98.6962 1.44198C100.453 0.481811 102.389 -6.10352e-05 104.5 -6.10352e-05C106.607 -6.10352e-05 108.54 0.481811 110.29 1.44198C112.047 2.39502 113.432 3.72641 114.446 5.43973C115.456 7.14592 115.962 9.0734 115.962 11.2222C115.962 13.3638 115.452 15.2985 114.431 17.0189C113.41 18.743 112.025 20.0851 110.275 21.0452C108.532 21.9983 106.607 22.473 104.5 22.473ZM104.5 17.6043C106.287 17.6043 107.716 17.0189 108.788 15.8482C109.867 14.6774 110.406 13.1354 110.406 11.2222C110.406 9.28043 109.867 7.73487 108.788 6.58195C107.716 5.42189 106.287 4.84007 104.5 4.84007C102.692 4.84007 101.248 5.41832 100.169 6.56767C99.0972 7.70988 98.5649 9.26258 98.5649 11.2222C98.5649 13.164 99.0972 14.7167 100.169 15.8767C101.248 17.0296 102.692 17.6043 104.5 17.6043Z"
+            fill="black" />
+          <path d="M134.33 0.313965V4.59727H128.38V22.2587H122.926V4.59727H116.991V0.313965H134.33Z" fill="black" />
+          <path
+            d="M141.732 4.59727V9.03762H149.052V13.1639H141.732V17.9754H150V22.2587H136.278V0.313965H150V4.59727H141.732Z"
+            fill="#FF00E5" />
+          <path
+            d="M7.07759 30.0581H8.5213V30.7148H6.14429V30.1009L7.57341 28.0877H6.14429V27.431H8.5213V28.0449L7.07759 30.0581Z"
+            fill="#9E9E9E" />
+          <path
+            d="M13.3746 30.7148L12.2517 29.2728V30.7148H11.4351V27.431H12.2517V28.873L13.3746 27.431H14.3225L13.0246 29.0443L14.3808 30.7148H13.3746Z"
+            fill="#9E9E9E" />
+          <path
+            d="M19.7017 28.4875C19.7017 28.6803 19.6579 28.8552 19.5704 29.0158C19.4829 29.1693 19.3444 29.2978 19.1621 29.4013C18.9762 29.4977 18.7465 29.5441 18.4767 29.5441H17.9663V30.7148H17.1497V27.431H18.4767C18.7392 27.431 18.9616 27.4809 19.1475 27.5737C19.3298 27.6594 19.4683 27.7843 19.5558 27.945C19.6506 28.1092 19.7017 28.2876 19.7017 28.4875ZM18.4184 28.9016C18.5715 28.9016 18.6845 28.8694 18.7538 28.8016C18.8303 28.7267 18.8704 28.6232 18.8704 28.4875C18.8704 28.3662 18.8303 28.2698 18.7538 28.202C18.6845 28.127 18.5715 28.0877 18.4184 28.0877H17.9663V28.9016H18.4184Z"
+            fill="#9E9E9E" />
+          <path
+            d="M23.6097 30.7578C23.3763 30.7578 23.1649 30.7185 22.9826 30.6436C22.7967 30.5579 22.6508 30.4508 22.5451 30.3152C22.4467 30.1831 22.3883 30.0296 22.3701 29.8583H23.1868C23.194 29.9547 23.2342 30.0296 23.3034 30.0868C23.38 30.1367 23.4784 30.1581 23.5951 30.1581C23.6899 30.1581 23.7701 30.1403 23.8284 30.101C23.8867 30.0653 23.9159 30.0154 23.9159 29.9583C23.9159 29.8833 23.8722 29.8262 23.7847 29.7869C23.7045 29.7512 23.5805 29.712 23.4055 29.6727C23.2086 29.6263 23.0482 29.5799 22.9243 29.5299C22.7967 29.4835 22.6836 29.4086 22.5889 29.3015C22.5014 29.198 22.4576 29.0552 22.4576 28.8732C22.4576 28.7304 22.5014 28.5983 22.5889 28.4734C22.6764 28.352 22.7967 28.2556 22.9534 28.1878C23.1175 28.1129 23.318 28.0736 23.5513 28.0736C23.8794 28.0736 24.1383 28.1557 24.3242 28.3163C24.5174 28.4805 24.6305 28.6947 24.6596 28.9588H23.9159C23.894 28.8732 23.8503 28.8018 23.7847 28.7447C23.7154 28.6875 23.6279 28.659 23.5222 28.659C23.4237 28.659 23.3508 28.6804 23.3034 28.7161C23.2524 28.7554 23.2305 28.8089 23.2305 28.8732C23.2305 28.941 23.267 28.9945 23.3472 29.0302C23.4237 29.0695 23.5513 29.1087 23.7263 29.1444C23.9195 29.1944 24.08 29.2408 24.2076 29.2872C24.3315 29.3372 24.4409 29.4157 24.5284 29.5299C24.6232 29.637 24.6742 29.7798 24.6742 29.9583C24.6742 30.1117 24.6305 30.251 24.543 30.3723C24.4555 30.4865 24.3279 30.5829 24.1638 30.6579C24.007 30.7221 23.8211 30.7578 23.6097 30.7578Z"
+            fill="#9E9E9E" />
+          <path
+            d="M32.9933 29.0301C33.1866 29.08 33.3433 29.18 33.46 29.3299C33.5766 29.4727 33.635 29.6404 33.635 29.8296C33.635 30.0973 33.5365 30.3115 33.3433 30.4721C33.1464 30.6363 32.8767 30.7148 32.5267 30.7148H30.9663V27.431H32.4829C32.822 27.431 33.0845 27.5095 33.2704 27.6594C33.4636 27.8129 33.5621 28.0235 33.5621 28.2876C33.5621 28.4804 33.5074 28.641 33.4016 28.7731C33.3032 28.898 33.1683 28.9837 32.9933 29.0301ZM31.7829 28.7588H32.3225C32.4574 28.7588 32.5595 28.7302 32.6288 28.6731C32.6944 28.616 32.7308 28.5304 32.7308 28.4161C32.7308 28.3126 32.6944 28.2305 32.6288 28.1734C32.5595 28.1092 32.4574 28.0735 32.3225 28.0735H31.7829V28.7588ZM32.3808 30.0723C32.5157 30.0723 32.6215 30.0438 32.7017 29.9867C32.7782 29.9224 32.8183 29.8296 32.8183 29.7154C32.8183 29.6012 32.7782 29.5119 32.7017 29.4441C32.6215 29.3799 32.5157 29.3442 32.3808 29.3442H31.7829V30.0723H32.3808Z"
+            fill="#9E9E9E" />
+          <path
+            d="M36.3391 29.4014C36.3391 29.1373 36.3865 28.9017 36.4849 28.7018C36.5907 28.5019 36.7328 28.352 36.9078 28.2449C37.0901 28.1307 37.2943 28.0736 37.5203 28.0736C37.7026 28.0736 37.863 28.1129 38.0016 28.1878C38.1474 28.2664 38.2568 28.3592 38.337 28.4734V28.1164H39.1536V30.7149H38.337V30.3438C38.2568 30.4687 38.1474 30.5686 38.0016 30.6436C37.863 30.7185 37.699 30.7578 37.5057 30.7578C37.2906 30.7578 37.0901 30.7007 36.9078 30.5865C36.7328 30.4723 36.5907 30.3152 36.4849 30.1153C36.3865 29.9154 36.3391 29.6798 36.3391 29.4014ZM38.337 29.4157C38.337 29.2158 38.2786 29.0588 38.162 28.9445C38.0526 28.8303 37.9177 28.7732 37.7537 28.7732C37.5859 28.7732 37.4474 28.8303 37.3307 28.9445C37.2214 29.0588 37.1703 29.2123 37.1703 29.4014C37.1703 29.6013 37.2214 29.7655 37.3307 29.8869C37.4474 30.0011 37.5859 30.0582 37.7537 30.0582C37.9177 30.0582 38.0526 30.0011 38.162 29.8869C38.2786 29.7727 38.337 29.6156 38.337 29.4157Z"
+            fill="#9E9E9E" />
+          <path
+            d="M43.222 30.7578C42.9886 30.7578 42.7772 30.7185 42.5949 30.6436C42.409 30.5579 42.2631 30.4508 42.1574 30.3152C42.059 30.1831 42.0007 30.0296 41.9824 29.8583H42.7991C42.8064 29.9547 42.8465 30.0296 42.9157 30.0868C42.9923 30.1367 43.0907 30.1581 43.2074 30.1581C43.3022 30.1581 43.3824 30.1403 43.4407 30.101C43.499 30.0653 43.5282 30.0154 43.5282 29.9583C43.5282 29.8833 43.4845 29.8262 43.397 29.7869C43.3168 29.7512 43.1928 29.712 43.0178 29.6727C42.8209 29.6263 42.6605 29.5799 42.5366 29.5299C42.409 29.4835 42.296 29.4086 42.2012 29.3015C42.1137 29.198 42.0699 29.0552 42.0699 28.8732C42.0699 28.7304 42.1137 28.5983 42.2012 28.4734C42.2887 28.352 42.409 28.2556 42.5657 28.1878C42.7298 28.1129 42.9303 28.0736 43.1636 28.0736C43.4918 28.0736 43.7506 28.1557 43.9365 28.3163C44.1298 28.4805 44.2428 28.6947 44.2719 28.9588H43.5282C43.5063 28.8732 43.4626 28.8018 43.397 28.7447C43.3277 28.6875 43.2402 28.659 43.1345 28.659C43.036 28.659 42.9631 28.6804 42.9157 28.7161C42.8647 28.7554 42.8428 28.8089 42.8428 28.8732C42.8428 28.941 42.8793 28.9945 42.9595 29.0302C43.036 29.0695 43.1636 29.1087 43.3386 29.1444C43.5319 29.1944 43.6923 29.2408 43.8199 29.2872C43.9438 29.3372 44.0532 29.4157 44.1407 29.5299C44.2355 29.637 44.2865 29.7798 44.2865 29.9583C44.2865 30.1117 44.2428 30.251 44.1553 30.3723C44.0678 30.4865 43.9402 30.5829 43.7761 30.6579C43.6193 30.7221 43.4334 30.7578 43.222 30.7578Z"
+            fill="#9E9E9E" />
+          <path
+            d="M49.6877 29.3729C49.6877 29.4514 49.6804 29.5264 49.6731 29.6013H47.8357C47.843 29.7655 47.894 29.8869 47.9815 29.9725C48.0763 30.0582 48.193 30.101 48.3315 30.101C48.5357 30.101 48.6815 30.0225 48.769 29.8583H49.6294C49.5783 30.0225 49.4981 30.1724 49.3815 30.3152C49.2721 30.4508 49.1336 30.5579 49.9586 30.6436C48.7836 30.7185 48.5831 30.7578 48.3607 30.7578C48.1055 30.7578 47.8794 30.7078 47.6753 30.6008C47.4711 30.4865 47.3107 30.3295 47.194 30.1296C47.0774 29.9226 47.019 29.6834 47.019 29.4157C47.019 29.1409 47.0701 28.9017 47.1795 28.7018C47.2961 28.5019 47.4565 28.352 47.6607 28.2449C47.8648 28.1307 48.0982 28.0736 48.3607 28.0736C48.6232 28.0736 48.8492 28.1271 49.0461 28.2307C49.2502 28.3377 49.4033 28.4877 49.5127 28.6875C49.6294 28.8803 49.6877 29.1087 49.6877 29.3729ZM48.8565 29.1587C48.8565 29.0266 48.8054 28.9231 48.7107 28.8446C48.6122 28.7589 48.4956 28.7161 48.3607 28.7161C48.2221 28.7161 48.1055 28.7554 48.0107 28.8303C47.9122 28.9089 47.8539 29.0159 47.8357 29.1587H48.8565Z"
+            fill="#9E9E9E" />
+          <path
+            d="M52.3469 29.4014C52.3469 29.1372 52.3943 28.9016 52.4928 28.7017C52.5985 28.5019 52.7407 28.3519 52.9157 28.2449C53.0979 28.1306 53.3021 28.0735 53.5281 28.0735C53.7031 28.0735 53.8563 28.1128 53.9948 28.1878C54.1406 28.2556 54.2573 28.3519 54.3448 28.4733V27.2597H55.1614V30.7149H54.3448V30.3437C54.2646 30.4686 54.1552 30.5686 54.0094 30.6435C53.8708 30.7185 53.7104 30.7577 53.5281 30.7577C53.3021 30.7577 53.0979 30.7006 52.9157 30.5864C52.7407 30.4722 52.5985 30.3151 52.4928 30.1152C52.3943 29.9154 52.3469 29.6798 52.3469 29.4014ZM54.3448 29.4156C54.3448 29.2157 54.2864 29.0587 54.1698 28.9445C54.0604 28.8302 53.9255 28.7731 53.7615 28.7731C53.5938 28.7731 53.4552 28.8302 53.3386 28.9445C53.2292 29.0587 53.1781 29.2122 53.1781 29.4014C53.1781 29.6012 53.2292 29.7654 53.3386 29.8868C53.4552 30.001 53.5938 30.0581 53.7615 30.0581C53.9255 30.0581 54.0604 30.001 54.1698 29.8868C54.2864 29.7726 54.3448 29.6155 54.3448 29.4156Z"
+            fill="#9E9E9E" />
+          <path
+            d="M62.352 28.4733C62.4286 28.3591 62.5343 28.2663 62.6729 28.1878C62.8187 28.1128 62.9828 28.0735 63.1687 28.0735C63.3911 28.0735 63.5916 28.1306 63.7666 28.2449C63.9489 28.3519 64.091 28.5019 64.1895 28.7017C64.2952 28.9016 64.3499 29.1372 64.3499 29.4014C64.3499 29.6798 64.2952 29.9154 64.1895 30.1152C64.091 30.3151 64.9489 30.4722 63.7666 30.5864C63.5916 30.7006 63.3911 30.7577 63.1687 30.7577C62.9828 30.7577 62.8187 30.7185 62.6729 30.6435C62.5343 30.5686 62.4286 30.4686 62.352 30.3437V30.7149H61.5354V27.2597H62.352V28.4733ZM63.5187 29.4014C63.5187 29.2122 63.4603 29.0587 63.3437 28.9445C63.2343 28.8302 63.0994 28.7731 62.9354 28.7731C62.7677 28.7731 62.6291 28.8302 62.5125 28.9445C62.4031 29.0587 62.352 29.2157 62.352 29.4156C62.352 29.6155 62.4031 29.7726 62.5125 29.8868C62.6291 30.001 62.7677 30.0581 62.9354 30.0581C63.0885 30.0581 63.227 30.001 63.3437 29.8868C63.4603 29.7654 63.5187 29.6012 63.5187 29.4014Z"
+            fill="#9E9E9E" />
+          <path d="M67.9807 27.2597V30.7149H67.1641V27.2597H67.9807Z" fill="#9E9E9E" />
+          <path
+            d="M72.1699 30.7578C71.9147 30.7578 71.6813 30.7078 71.4699 30.6008C71.2657 30.4865 71.098 30.3295 71.9741 30.1296C70.8574 29.9226 70.7991 29.6834 70.7991 29.4157C70.7991 29.1516 70.8574 28.916 70.9741 28.7161C71.098 28.5091 71.2657 28.352 71.4699 28.2449C71.6813 28.1307 71.922 28.0736 72.1844 28.0736C72.4469 28.0736 72.6803 28.1307 72.8844 28.2449C73.0959 28.352 73.2636 28.5091 73.3802 28.7161C73.5042 28.916 73.5698 29.1516 73.5698 29.4157C73.5698 29.6834 73.5042 29.9226 73.3802 30.1296C73.2636 30.3295 73.0959 30.4865 73.610 30.6008C72.6693 30.7078 72.4324 30.7578 72.1699 30.7578ZM72.1699 30.0582C72.323 30.0582 72.4542 30.0082 72.5636 29.9012C72.6803 29.7869 72.7386 29.6263 72.7386 29.4157C72.7386 29.2087 72.6839 29.0445 72.5782 28.9303C72.4688 28.816 72.3376 28.7589 72.1844 28.7589C72.0277 28.7589 71.8964 28.816 71.7907 28.9303C71.6813 29.0445 71.6303 29.2087 71.6303 29.4157C71.6303 29.6263 71.6777 29.7869 71.7761 29.9012C71.8819 30.0082 72.0131 30.0582 72.1699 30.0582Z"
+            fill="#9E9E9E" />
+          <path
+            d="M76.2273 29.4157C76.2273 29.1409 76.2783 28.9017 76.3877 28.7018C76.5044 28.5019 76.6648 28.352 76.8689 28.2449C77.0731 28.1307 77.3064 28.0736 77.5689 28.0736C77.897 28.0736 78.1741 28.1593 78.4001 28.3306C78.6225 28.5019 78.7684 28.7447 78.8376 29.0588H77.9772C77.897 28.8589 77.7585 28.7589 77.5543 28.7589C77.3976 28.7589 77.2773 28.816 77.1898 28.9303C77.1023 29.0445 77.0585 29.2087 77.0585 29.4157C77.0585 29.6263 77.1023 29.7869 77.1898 29.9012C77.2773 30.0154 77.3976 30.0725 77.5543 30.0725C77.7585 30.0725 77.897 29.9725 77.9772 29.7727H78.8376C78.7684 30.0796 78.6225 30.3223 78.4001 30.5008C78.1741 30.6721 77.897 30.7578 77.5689 30.7578C77.3064 30.7578 77.0731 30.7078 76.8689 30.6008C76.6648 30.4865 76.5044 30.3295 76.3877 30.1296C76.2783 29.9226 76.2273 29.6834 76.2273 29.4157Z"
+            fill="#9E9E9E" />
+          <path
+            d="M83.2966 30.7149L82.48 29.6155V30.7149H81.6633V27.2597H82.48V29.1729L83.282 28.1164H84.2882L83.1945 29.4156L84.3028 30.7149H83.2966Z"
+            fill="#9E9E9E" />
+          <path
+            d="M86.8403 29.4157C86.8403 29.1409 86.8914 28.9017 87.0007 28.7018C87.1174 28.5019 87.2778 28.352 87.482 28.2449C87.6861 28.1307 87.9195 28.0736 88.182 28.0736C88.5101 28.0736 88.7871 28.1593 89.0132 28.3306C89.2356 28.5019 89.3814 28.7447 89.4507 29.0588H88.5903C88.5101 28.8589 88.3715 28.7589 88.1674 28.7589C88.0106 28.7589 87.8903 28.816 87.8028 28.9303C87.7153 29.0445 87.6716 29.2087 87.6716 29.4157C87.6716 29.6263 87.7153 29.7869 87.8028 29.9012C87.8903 30.0154 88.0106 30.0725 88.1674 30.0725C88.3715 30.0725 88.5101 29.9725 88.5903 29.7727H89.4507C89.3814 30.0796 89.2356 30.3223 89.0132 30.5008C88.7871 30.6721 88.5101 30.7578 88.182 30.7578C87.9195 30.7578 87.6861 30.7078 87.482 30.6008C87.2778 30.4865 87.1174 30.3295 87.0007 30.1296C86.8914 29.9226 86.8403 29.6834 86.8403 29.4157Z"
+            fill="#9E9E9E" />
+          <path
+            d="M93.9096 28.0878C94.2195 28.0878 94.4674 28.1878 94.6534 28.3876C94.8357 28.5804 94.9305 28.8445 94.9305 29.1872V30.7149H94.1138V29.3014C94.1138 29.1301 94.0628 28.998 93.968 28.9016C93.8805 28.7981 93.7565 28.7446 93.6034 28.7446C93.4466 28.7446 93.319 28.7981 93.2243 28.9016C93.1368 28.998 93.093 29.1301 93.093 29.3014V30.7149H92.2764V28.1164H93.093V28.459C93.1805 28.3448 93.2899 28.2556 93.4284 28.1878C93.5742 28.1235 93.7347 28.0878 93.9096 28.0878Z"
+            fill="#9E9E9E" />
+          <path
+            d="M97.7207 29.4014C97.7207 29.1373 97.7681 28.9017 97.8665 28.7018C97.9723 28.5019 98.1144 28.352 98.2894 28.2449C98.4717 28.1307 98.6759 28.0736 98.9019 28.0736C99.0842 28.0736 99.2446 28.1129 99.3832 28.1878C99.529 28.2664 99.6384 28.3592 99.7186 28.4734V28.1164H100.535V30.715H99.7186V30.3438C99.6384 30.4687 99.529 30.5686 99.3832 30.6436C99.2446 30.7185 99.0806 30.7578 98.8873 30.7578C98.6722 30.7578 98.4717 30.7007 98.2894 30.5865C98.1144 30.4723 97.9723 30.3152 97.8665 30.1153C97.7681 29.9154 97.7207 29.6798 97.7207 29.4014ZM99.7186 29.4157C99.7186 29.2158 99.6602 29.0588 99.5436 28.9445C99.4342 28.8303 99.2993 28.7732 99.1352 28.7732C98.9675 28.7732 98.829 28.8303 98.7123 28.9445C98.603 29.0588 98.5519 29.2123 98.5519 29.4014C98.5519 29.6013 98.603 29.7655 98.7123 29.8869C98.829 30.0011 98.9675 30.0582 99.1352 30.0582C99.2993 30.0582 99.4342 30.0011 99.5436 29.8869C99.6602 29.7727 99.7186 29.6156 99.7186 29.4157Z"
+            fill="#9E9E9E" />
+          <path
+            d="M103.918 27.8451C103.78 27.8451 103.663 27.8022 103.568 27.7166C103.481 27.6309 103.437 27.5274 103.437 27.4025C103.437 27.2811 103.481 27.1811 103.568 27.1026C103.663 27.017 103.78 26.9741 103.918 26.9741C104.064 26.9741 104.181 27.017 104.268 27.1026C104.356 27.1811 104.399 27.2811 104.399 27.4025C104.399 27.5274 104.356 27.6309 104.268 27.7166C104.181 27.8022 104.064 27.8451 103.918 27.8451ZM104.327 28.1163V30.7149H103.51V28.1163H104.327Z"
+            fill="#9E9E9E" />
+          <path
+            d="M108.924 28.0878C109.234 28.0878 109.482 28.1878 109.668 28.3877C109.861 28.5804 109.96 28.8445 109.96 29.1872V30.7149H109.143V29.3014C109.143 29.1301 109.092 28.998 108.997 28.9017C108.91 28.7981 108.786 28.7446 108.632 28.7446C108.476 28.7446 108.348 28.7981 108.253 28.9017C108.166 28.998 108.122 29.1301 108.122 29.3014V30.7149H107.305V28.1164H108.122V28.459C108.21 28.3448 108.319 28.2556 108.457 28.1878C108.592 28.1235 108.749 28.0878 108.924 28.0878Z"
+            fill="#9E9E9E" />
+          <path
+            d="M117.505 29.9724L118.089 28.1163H118.949L118.016 30.7149H117.009L116.062 28.1163H116.936L117.505 29.9724Z"
+            fill="#9E9E9E" />
+          <path
+            d="M122.896 30.7578C122.64 30.7578 122.407 30.7078 122.196 30.6008C121.992 30.4865 121.824 30.3295 121.7 30.1296C121.583 29.9226 121.525 29.6834 121.525 29.4157C121.525 29.1516 121.583 28.916 121.7 28.7161C121.824 28.5091 121.992 28.352 122.196 28.2449C122.407 28.1307 122.648 28.0736 122.91 28.0736C123.173 28.0736 123.406 28.1307 123.61 28.2449C123.822 28.352 123.989 28.5091 124.106 28.7161C124.23 28.916 124.296 29.1516 124.296 29.4157C124.296 29.6834 124.23 29.9226 124.106 30.1296C123.989 30.3295 123.822 30.4865 123.61 30.6008C123.395 30.7078 123.158 30.7578 122.896 30.7578ZM122.896 30.0582C123.049 30.0582 123.18 30.0082 123.289 29.9012C123.406 29.7869 123.464 29.6263 123.464 29.4157C123.464 29.2087 123.41 29.0445 123.304 28.9303C123.195 28.816 123.063 28.7589 122.91 28.7589C122.754 28.7589 122.622 28.816 122.517 28.9303C122.407 29.0445 122.356 29.2087 122.356 29.4157C122.356 29.6263 122.404 29.7869 122.502 29.9012C122.608 30.0082 122.739 30.0582 122.896 30.0582Z"
+            fill="#9E9E9E" />
+          <path
+            d="M128.601 30.0439V30.7149H128.193C127.89 30.7149 127.657 30.6435 127.493 30.5007C127.325 30.358 127.245 30.1295 127.245 29.8154V28.7731H126.924V28.1164H127.245V27.4739H128.061V28.1164H128.601V28.7731H128.061V29.8154C128.061 29.8939 128.08 29.9511 128.12 29.9867C128.156 30.026 128.222 30.0439 128.309 30.0439H128.601Z"
+            fill="#9E9E9E" />
+          <path
+            d="M131.847 27.8451C131.709 27.8451 131.592 27.8022 131.497 27.7166C131.41 27.6309 131.366 27.5274 131.366 27.4025C131.366 27.2811 131.41 27.1811 131.497 27.1026C131.592 27.017 131.709 26.9741 131.847 26.9741C131.993 26.9741 132.11 27.017 132.197 27.1026C132.285 27.1811 132.328 27.2811 132.328 27.4025C132.328 27.5274 132.285 27.6309 132.197 27.7166C132.11 27.8022 131.993 27.8451 131.847 27.8451ZM132.256 28.1163V30.7149H131.439V28.1163H132.256Z"
+            fill="#9E9E9E" />
+          <path
+            d="M136.853 28.0878C137.163 28.0878 137.411 28.1878 137.597 28.3877C137.79 28.5804 137.888 28.8445 137.888 29.1872V30.7149H137.072V29.3014C137.072 29.1301 137.021 28.998 136.926 28.9017C136.838 28.7981 136.715 28.7446 136.561 28.7446C136.405 28.7446 136.277 28.7981 136.182 28.9017C136.095 28.998 136.051 29.1301 136.051 29.3014V30.7149H135.234V28.1164H136.051V28.459C136.139 28.3448 136.248 28.2556 136.386 28.1878C136.521 28.1235 136.678 28.0878 136.853 28.0878Z"
+            fill="#9E9E9E" />
+          <path
+            d="M141.86 28.0736C142.042 28.0736 142.203 28.1129 142.341 28.1878C142.487 28.2556 142.597 28.3519 142.677 28.4734V28.1164H143.493V30.715C143.493 30.9506 143.442 31.1647 143.348 31.3575C143.249 31.5574 143.1 31.7144 142.896 31.8286C142.699 31.9429 142.458 32 142.166 32C141.765 32 141.445 31.9072 141.204 31.7287C140.96 31.5467 140.817 31.3004 140.781 30.9863H141.583C141.612 31.0791 141.674 31.1576 141.773 31.2147C141.867 31.2789 141.984 31.3146 142.123 31.3146C142.287 31.3146 142.418 31.2647 142.516 31.1719C142.622 31.0755 142.677 30.922 142.677 30.715V30.3438C142.597 30.4687 142.487 30.5686 142.341 30.6436C142.203 30.7185 142.042 30.7578 141.86 30.7578C141.634 30.7578 141.43 30.7007 141.248 30.5865C141.073 30.4723 140.931 30.3152 140.825 30.1153C140.726 29.9154 140.679 29.6798 140.679 29.4014C140.679 29.1373 140.726 28.9017 140.825 28.7018C140.931 28.5019 141.073 28.352 141.248 28.2449C141.43 28.1307 141.634 28.0736 141.86 28.0736ZM142.677 29.4157C142.677 29.2158 142.618 29.0588 142.502 28.9445C142.392 28.8303 142.258 28.7732 142.093 28.7732C141.926 28.7732 141.787 28.8303 141.671 28.9445C141.561 29.0588 141.51 29.2123 141.51 29.4014C141.51 29.6013 141.561 29.7655 141.671 29.8869C141.787 30.0011 141.926 30.0582 142.093 30.0582C142.258 30.0582 142.392 30.0011 142.502 29.8869C142.618 29.7727 142.677 29.6156 142.677 29.4157Z"
+            fill="#9E9E9E" />
+        </svg>
+      </div>
+      <div class="gwei-indicator">
+        <div class="blinking-dot"></div>
+        <div class="indicator-text">
+          Gwei <span class="version"></span>
+        </div>
+      </div>
+
+      <button class="burger-menu" aria-label="Toggle Menu">
+        <i class="fas fa-bars"></i>
+      </button>
+      <ul class="nav-links">
+        <li class="nav-item" id="nav-home"><a href="index.html">Home</a></li>
+        <li class="nav-item" id="nav-governance"><a href="governance.html">Governance</a></li>
+        <li class="nav-item" id="nav-vote"><a href="vote.html">Vote</a></li>
+        <li class="nav-item" id="nav-track"><a href="result.html">Track vote</li>
+        <li class="nav-item" id="nav-register"><a onclick="openRegisterModal()" href="#">Register</a></li>
+      </ul>
+
+    </nav>
+  </div>
+  <div class="cylinder"></div>
+  <main class="hero-section">
+    <div class="hero-content">
+      <h1 class="hero-title">
+        <span class="highlight-de">Dec<span class="highlight-de-e">e</span>ntralized Trust.<br>
+          On The Fastest E<span class="highlight-evm">vm</span>
+      </h1>
+      <p class="hero-desc">
+        Experience Truly Secret & Verifiable Voting: <br> Powered by Zero-Knowledge Proofs with the speed of 
+        <img class="base_logo" src="Base_Wordmark_Blue.svg" alt="BASE">
+      </p>
+      <button class="btn-open" id="launch-app-btn">Launch</button>
+    </div>
+    <div class="hero-visual">
+      <!-- Visual content will be styled via CSS -->
+    </div>
+  </main>
+  <!-- Page 2 Section -->
+  <section class="page-2">
+    <div class="page-2-content">
+      <h1 class="page-2-title">The Future of Verifiable <br> & Private Voting</h1>
+      <p class="page-2-desc">
+        Leverage the power of Zero-Knowledge Proofs to cast completely anonymous votes. Our blockchain-based platform
+        provides cryptographic proof of an election’s integrity, ensuring every voice is counted, but never revealed.
+      </p>
+      <div class="page-2-features">
+      </div>
+    </div>
+    <div class="page-2-features">
+      <div class="feature-item">
+        <h3 class="feature-title">Zero-Knowledge Privacy</h3>
+        <i class="fa-solid fa-user-secret"></i>
+        <p class="feature-text">Cast your vote with absolute confidence. Our ZK-proof system ensures your choice
+          remains secret, forever decoupled from your identity.</p>
+      </div>
+      <div class="feature-item">
+        <h3 class="feature-title">Unbreakable Transparency </h3>
+        <i class="fa-solid fa-handshake"></i>
+
+        <p class="feature-text">Every valid vote is recorded immutably on the blockchain. Verify election results
+          with cryptographic certainty, ensuring no vote is ever tampered with or silenced.</p>
+      </div>
+      <div class="feature-item">
+        <h3 class="feature-title">Powerful Election Hosting</h3>
+        <i class="fa-solid fa-battery-full"></i>
+        <p class="feature-text">From small groups to large-scale elections, empower your own voting events with
+          custom eligibility rules to ensure only the right people participate.</p>
+      </div>
+      <div class="feature-item">
+        <h3 class="feature-title">Effortless Participation</h3>
+        <i class="fa-solid fa-users"></i>
+        <p class="feature-text">Forget Web3 complexities. With a simple profile setup and an intuitive interface,
+          participating in a secure, decentralized election is just a few clicks away.</p>
+      </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+  </section>
+  <!-- Page 3 Section -->
+  <section class="page-3">
+    <div class="page-3-image-container">
+      <img src="Group 8091.svg" alt="Voting Interface" class="page-3-image">
+    </div>
+  </section>
+  <!-- Page 4 Section -->
+  <section class="page-4">
+    <div class="page-4-container">
+      <h3 class="page-4-heading">Everything you need</h3>
+      <h2 class="page-4-title">Powerful Tools for Trusted Elections</h2>
+      <p class="page-4-subtitle">From defining voter eligibility to tracking results in real-time, UNI-VOTE gives you a
+        complete and intuitive toolkit to host secure, transparent, and fair elections with confidence.</p>
+      <div class="page-4-tools">
+        <div class="tool-card">
+          <div class="tool-visual cross"></div>
+          <h3 class="tool-title">Customizable Eligibility</h3>
+          <p class="tool-desc">Define exactly who can participate. Create rules based on profiles, email domains, or
+            specific criteria of your choice to ensure the integrity of your vote.</p>
+        </div>
+        <div class="tool-card">
+          <div class="tool-visual cube"></div>
+          <h3 class="tool-title">Robust Result Tracking</h3>
+          <p class="tool-desc">Monitor your election’s progress through a live dashboard. Access transparent, aggregated
+            results the moment the voting period concludes.</p>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+  <!-- Page 5 Section (FAQs) -->
+  <section class="page-5">
+    <div class="faq-container">
+      <div class="faq-questions">
+        <h2>FAQs.</h2>
+        <ul>
+          <li class="faq-item" data-target="answer1">
+            <span>What is UNI-VOTE?</span>
+            <span class="star-icon">★</span>
+          </li>
+          <li class="faq-item" data-target="answer2">
+            <span>Is my vote really anonymous? How?</span>
+            <span class="star-icon">★</span>
+          </li>
+          <li class="faq-item" data-target="answer3">
+            <span>If it's anonymous, how can I be sure the results are fair?</span>
+            <span class="star-icon">★</span>
+          </li>
+          <li class="faq-item" data-target="answer4">
+            <span>Why do I need to connect my accounts, like Google or X?</span>
+            <span class="star-icon">★</span>
+          </li>
+          <li class="faq-item" data-target="answer5">
+            <span>What is a "gas fee" and do I need to pay to vote?</span>
+            <span class="star-icon">★</span>
+          </li>
+          <li class="faq-item" data-target="answer6">
+            <span>How does UNI-VOTE's technology actually work?</span>
+            <span class="star-icon">★</span>
+          </li>
+          <li class="faq-item" data-target="answer7">
+            <span>What is the voting process in simple steps?</span>
+            <span class="star-icon">★</span>
+          </li>
+        </ul>
+      </div>
+      <div class="faq-answers">
+        <h2>Ans.</h2>
+        <div id="answer1" class="answer">
+          <p>UNI-VOTE is a secure, next-generation voting platform that uses blockchain technology and Zero-Knowledge
+            Proofs. It allows anyone to host and participate in elections where every vote is completely private and the
+            final results are fully verifiable and tamper-proof.</p>
+        </div>
+        <div id="answer2" class="answer" style="display: none;">
+          <p>Yes, your vote is 100% anonymous. When you cast your ballot, our Zero-Knowledge Proof (ZKP) system
+            generates a cryptographic proof that confirms you are an eligible voter without revealing who you are. Your
+            vote is mathematically separated from your identity before it's ever recorded on the blockchain. No one, not
+            even us, can link you to your specific vote.</p>
+        </div>
+        <div id="answer3" class="answer" style="display: none;">
+          <p>This is the power of blockchain. While your identity is private, the vote itself is recorded on a public,
+            unchangeable ledger. This creates a transparent audit trail where anyone can verify that all valid votes
+            were counted correctly and that no votes were added or removed. It’s the perfect balance of individual
+            privacy and public verifiability.</p>
+        </div>
+        <div id="answer4" class="answer" style="display: none;">
+          <p>Connecting accounts is used to verify your eligibility for specific elections that have custom rules set by
+            the host (e.g., "Only for members with an @iitp.ac.in email"). Our system only checks that you meet the
+            criteria; your personal data is never linked to your final vote. This allows for powerful, flexible, and
+            secure community voting.</p>
+        </div>
+        <div id="answer5" class="answer" style="display: none;">
+          <p>A gas fee is a very small transaction cost required by the blockchain network to record a transaction.
+            We've built UNI-VOTE on the Base blockchain, where these fees are typically extremely low (often less than a
+            cent). While this small network fee is part of the process, we are actively exploring ways to sponsor these
+            fees for users in the future to make voting completely free.</p>
+        </div>
+        <div id="answer6" class="answer" style="display: none;">
+          <p> At its core, UNI-VOTE uses an "Attested Claim-Nonce" model. First, our secure backend (acting as an
+            Oracle) verifies your eligibility for an election based on the host's rules. If you are eligible, it issues
+            you a unique, single-use "digital ticket" (a nonce). You then use this ticket, along with a personal secret
+            only you know, to generate a Zero-Knowledge Proof. This proof confirms to the blockchain that you hold a
+            valid ticket, without revealing which ticket belongs to you, ensuring your vote is secure and anonymous.</p>
+        </div>
+        <div id="answer7" class="answer" style="display: none;">
+          <p>Voting on UNI-VOTE is designed to be simple:
+            Register: For each election, you first register to have your eligibility checked. If successful, you receive
+            your unique "digital ticket" for that vote.
+            Vote: Choose your preferred option and click the "Vote" button. Our system generates a secure ZK proof for
+            you in the background.
+            Confirm: A transaction will pop up in your wallet. Simply approve it to cast your vote securely and
+            privately onto the blockchain.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Page 6 Section (Join Us) -->
+  <section class="page-6">
+    <div class="page-6-container">
+      <div class="visual-left"></div>
+      <div class="join-content">
+        <h1 class="join-title">Join us today</h1>
+        <p class="join-desc">Become a part of UNI-VOTE's mission to deliver secure, transparent, and decentralized
+          voting.</p>
+        <form class="join-form">
+          <input type="email" placeholder="Enter your Email" class="join-input">
+          <button type="submit" class="join-button">Send</button>
+        </form>
+      </div>
+      <div class="visual-right"></div>
+    </div>
+  </section>
+  <!-- Footer Section -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>Explore</h3>
+        <ul>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="roadmap.html">Roadmap</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Elsewhere</h3>
+        <ul>
+                    <li><a href="https://www.linkedin.com/company/uni-vote/?viewAsMember=true">LinkedIn</a></li>
+          <li><a href="https://github.com/amitsikdar37/univote">Github</a></li>
+          <li><a href="https://web.telegram.org/k/#-2512359544">Telegram</a></li>
+
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Product</h3>
+        <ul>
+          <li><a href="features.html">Features</a></li>
+          <!-- <li><a href="#">Integrations</a></li>
+          <li><a href="#">Resources</a></li> -->
+        </ul>
+      </div>
+      <div class="footer-logo">
+        <img src="uni-vote[1].png" alt="UNI-VOTE Logo" class="footer-logo-img">
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Welcome. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+      <div class="footer-social">
+        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="#"><i class="fa-brands fa-github"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Popup Modal register -->
+  <div class="modal" id="registerpopupModal">
+    <div class="container">
+      <span class="close-btn" onclick="closeModal()">X</span>
+
+      <!-- Left Panel -->
+      <div class="left-panel">
+        <div class="left-content">
+          <!-- <h2>WELCOME TO UNIVOTE</h2> -->
+          <h1>
+            <!-- <div>SECURE</div> -->
+            <!-- <div>PRIVATE</div> -->
+            <!-- <div>VERIFIABLE.</div> -->
+          </h1>
+        </div>
+      </div>
+
+      <!-- Right Panel -->
+      <div class="right-panel">
+        <img src="UI-Unicorn-Logo.png" class="logo">
+
+        <p class="subheading">SIGN-UP</p>
+
+        <form class="form">
+          <small id="signupformError" style="color: red; display: none;"></small>
+          <input type="Email" id="emailId" name="email" placeholder="Enter your email" />
+          <small id="signupemailError" style="color: red; display: none;"></small>
+          <!-- <p class="subheading">Login</p> -->
+          <!-- <label>password</label> -->
+
+          <input type="password" id="signup-password" name="password" placeholder="Enter your password" />
+          <small id="signuppasswordError" style="color: red; display: none;"></small>
+
+          <input type="confirm password" id="confirmPassword" name="confirmPassword"
+            placeholder="Confirm your password" />
+          <small id="confirmPasswordError" style="color: red; display: none;"></small>
+
+          <div class="form-options">
+            <label><input type="checkbox"> Remember me</label>
+            <a href="#">Forgot password?</a>
+          </div>
+
+          <button type="submit" class="btn-primary" id="signUpBtn">Sign up</button>
+          <div id="signuploadingMessage" style="display: none; text-align: center; color: white; margin-bottom: 10px;">
+            Sending data to server...
+          </div>
+          <div id="signupsuccessMessage"
+            style="display: none; text-align: center; color: lightgreen; margin-bottom: 10px;">
+            Sending Otp...
+          </div>
+
+        </form>
+
+        <div class="divider"><span>or</span></div>
+
+        <div class="social-buttons">
+
+          <button type="button" class="btn-secondary" id="g_id_signup">
+            <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" />
+            Sign up with Google
+          </button>
+
+          <button type="button" class="btn-twitter">
+            <i class="fa-brands fa-x-twitter"></i>
+            Continue with Twitter
+          </button>
+
+        </div>
+
+        <p class="signup-text">Already have an account? <a onclick="openModal()" href="#">Sign in</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Popup Modal login -->
+  <div class="modal" id="popupModal">
+    <div class="container">
+      <span class="close-btn" onclick="closeModal()">X</span>
+
+      <!-- Left Panel -->
+      <div class="left-panel">
+        <div class="left-content">
+          <!-- <h2>WELCOME TO UNIVOTE</h2> -->
+          <h1>
+            <!-- <div>SECURE</div> -->
+            <!-- <div>PRIVATE</div> -->
+            <!-- <div>VERIFIABLE.</div> -->
+          </h1>
+        </div>
+      </div>
+
+      <!-- Right Panel -->
+      <div class="right-panel">
+        <img src="UI-Unicorn-Logo.png" class="logo">
+
+        <p class="subheading">Login</p>
+
+        <form class="form">
+          <small id="formError" style="color: red; display: none;"></small>
+          <input type="email" id="email" name="email" placeholder="Enter your registered email" />
+          <small id="emailError" style="color: red; display: none;"></small>
+          <!-- <p class="subheading">Login</p> -->
+          <!-- <label>password</label> -->
+
+          <input type="password" id="password" name="password" placeholder="Enter your password" />
+          <small id="passwordError" style="color: red; display: none;"></small>
+
+          <div class="form-options">
+            <label><input type="checkbox"> Remember me</label>
+            <a href="#">Forgot password?</a>
+          </div>
+
+          <button type="submit" class="btn-primary" id="signinBtn">Sign in</button>
+          <div id="loadingMessage" style="display: none; text-align: center; color: white; margin-bottom: 10px;">
+            Sending data to server...
+          </div>
+          <div id="successMessage" style="display: none; text-align: center; color: lightgreen; margin-bottom: 10px;">
+            Sign In successful! Redirecting...
+          </div>
+
+        </form>
+
+        <div class="divider"><span>or</span></div>
+
+        <div class="social-buttons">
+          <button class="btn-secondary" id="g_id_signin">
+            <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" />
+            Sign in with Google
+          </button>
+
+          <button type="button" class="btn-twitter">
+            <i class="fa-brands fa-x-twitter"></i>
+            Continue with Twitter
+          </button>
+
+          </form>
+          <!-- <p class="signup-text">Don't have an account? <button onclick="openRegisterModal()" class="signup-btn">Sign
+              up</button></p> -->
+
+        </div>
+        <!-- <p class="signup-text">Don't have an account? <button onclick="openRegisterModal()" class="signup-btn">Sign
+              up</button></p> -->
+        <p class="signup-text">Don't have an account? <a onclick="openRegisterModal()" href="#">Sign up</a></p>
+      </div>
+
+      <script>
+        const burgerMenu = document.querySelector('.burger-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        burgerMenu.addEventListener('click', () => {
+          navLinks.classList.toggle('active');
+          burgerMenu.classList.toggle('active');
+        });
+
+        function openModal() {
+          document.getElementById("registerpopupModal").classList.remove("active");
+          document.getElementById("popupModal").classList.add("active");
+        }
+
+        function openRegisterModal() {
+          document.getElementById("popupModal").classList.remove("active");
+          document.getElementById("registerpopupModal").classList.add("active");
+        }
+
+        function closeModal() {
+          document.getElementById("popupModal").classList.remove("active");
+          document.getElementById("registerpopupModal").classList.remove("active");
+        }
+      </script>
+
+      <!-- <script type="module" src="./scripts/index.js"></script> -->
+      <script type="module" src="./scripts/index.js"></script>
+
+</body>
+
+</html>

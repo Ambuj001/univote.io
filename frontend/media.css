@@ -1,0 +1,156 @@
+/**************************************HERO SECTION*******************************************/
+@media (max-width: 768px) {
+    .hero {
+        /* margin-bottom: 5rem; */
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero h2 {
+        font-size: 1.5rem;
+    }
+
+    .launch-btn {
+        padding: 12px 30px;
+        font-size: 1rem;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .hero p {
+        text-align: center;
+        position: absolute;
+        right: 20%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 5rem;
+
+        & img {
+            display: none;
+        }
+
+
+    }
+}
+
+/**************************************HERO SECTION END*******************************************/
+
+
+
+/**************************************ZKP SECTION START*******************************************/
+
+@media (max-width: 900px) {
+    .zkp-section {
+        flex-direction: column;
+        padding: 60px 5%;
+    }
+
+    .zkp-text,
+    .zkp-graphic {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .zkp-graphic {
+        margin-top: 40px;
+    }
+
+    .loop-text {
+        font-size: 1rem;
+    }
+}
+
+/**************************************ZKP SECTION END*******************************************/
+
+
+
+
+
+
+
+/**************************************FOOTER SECTION START*******************************************/
+
+@media (max-width: 768px) {
+    .footer-top {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-bottom a {
+        margin-left: 10px;
+    }
+
+    /* .hero p{ */
+    /* text-align: center; */
+    /* position: relative; */
+    /* right: 20%; */
+    /* } */
+    .footer-bottom {
+        position: relative;
+
+    }
+
+    .footer-logo img {
+        height: 60px;
+    }
+
+    h6 {
+        display: none;
+    }
+
+}
+
+/**************************************FOOTER SECTION END*******************************************/
+
+
+
+
+@media (max-width: 768px) {
+
+    .social-icons {
+
+        display: none !important;
+
+    }
+
+    .footer {
+        height: 20vh;
+    }
+
+
+}
+
+
+
+@media (max-width: 768px) {
+
+
+
+    .nav-item-4 {
+        display: none !important;
+    }
+
+
+}
+
+@media (min-width: 992px) {
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 9999;
+    }
+}

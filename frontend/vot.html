@@ -1,0 +1,73 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>UniVote - ZKP Voting</title>
+  <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Cast Your Vote</h1>
+  <button onclick="castVote()">Submit ZK Vote</button>
+
+  <script>
+    const ZKP_VOTING_ADDRESS = "0x4658F8678C7b06cB1667773303CE55b45F803682"; // your deployed contract
+    const electionId = "uni-vote-1";
+    const candidateIndex = 0;
+
+    const ZKP_VOTING_ABI = [
+      {
+        "inputs": [
+          { "internalType": "string", "name": "_electionId", "type": "string" },
+          { "internalType": "uint256[2]", "name": "a", "type": "uint256[2]" },
+          { "internalType": "uint256[2][2]", "name": "b", "type": "uint256[2][2]" },
+          { "internalType": "uint256[2]", "name": "c", "type": "uint256[2]" },
+          { "internalType": "uint256[4]", "name": "input", "type": "uint256[4]" },
+          { "internalType": "uint256", "name": "candidateIndex", "type": "uint256" }
+        ],
+        "name": "voteWithZKProof",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      }
+    ];
+
+    async function loadProofAndPublic() {
+      const proof = await fetch("public/proof.json").then(res => res.json());
+      const publicSignals = await fetch("public/public.json").then(res => res.json());
+      return { proof, publicSignals };
+    }
+
+    function packProof(proof) {
+      return [
+        [proof.pi_a[0], proof.pi_a[1]],
+        [
+          [proof.pi_b[0][1], proof.pi_b[0][0]],
+          [proof.pi_b[1][1], proof.pi_b[1][0]]
+        ],
+        [proof.pi_c[0], proof.pi_c[1]]
+      ];
+    }
+
+    async function castVote() {
+      try {
+        const { proof, publicSignals } = await loadProofAndPublic();
+        const [a, b, c] = packProof(proof);
+
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        await provider.send("eth_requestAccounts", []);
+        const signer = provider.getSigner();
+        const contract = new ethers.Contract(ZKP_VOTING_ADDRESS, ZKP_VOTING_ABI, signer);
+
+        const tx = await contract.voteWithZKProof(electionId, a, b, c, publicSignals, candidateIndex);
+        await tx.wait();
+
+        alert("✅ Vote submitted successfully!");
+      } catch (err) {
+        console.error(err);
+        alert("❌ Error submitting vote: " + (err.message || "unknown error"));
+      }
+    }
+  </script>
+</body>
+</html>

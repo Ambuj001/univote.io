@@ -1,0 +1,326 @@
+/* Global Box Sizing */
+html {
+    box-sizing: border-box;
+}
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-color: white; /* Light background for contrast */
+}
+
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    width: 100%;
+    padding: 20px 40px;
+    justify-content: space-between;
+    align-items: center;
+    background: transparent; /* Already transparent */
+    backdrop-filter: blur(8px); /* Provides the blurred glass effect */
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+.navbar-logo {
+    display: flex;
+    align-items: center;
+    font-family: 'DM Sans', sans-serif;
+    color: black;
+}
+
+.gwei-indicator {
+    display: inline-flex;
+    align-items: center;
+    background-color: #000000;
+    padding: 7px;
+    border-radius: 50px;
+    margin-left: 20px;
+}
+
+.blinking-dot {
+    height: 20px;
+    width: 20px;
+    background-color: #e91414;
+    border-radius: 50%;
+    margin-left: 5px;
+    margin-right: 5px;
+    animation: blink 2.2s infinite ease-in-out;
+}
+
+.indicator-text {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    font-family: 'DM Sans', sans-serif;
+}
+
+.indicator-text .version {
+    color: #4ade80;
+    font-weight: 600;
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0.2; }
+    100% { opacity: 1; }
+}
+
+.burger-menu {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #000;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+
+.nav-item a {
+    color: rgba(0, 0, 0, 0.60);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 23px;
+    letter-spacing: -0.16px;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.nav-item a:hover,
+.nav-item a:focus {
+    color: #FF00E5;
+}
+
+#nav-register {
+    display: flex;
+    padding: 10px 15px;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    border-radius: 10px;
+    background-color: black;
+}
+
+#nav-register a {
+    color: #fff !important;
+    font-weight: 500;
+}
+
+/* Hero Section Styles */
+.hero-section {
+    width: 100%;
+    /* Add margin-top to push it below the fixed navbar */
+    margin-top: 80px; /* Adjust this value if your navbar height is different */
+    padding: 20px 0; /* Add some vertical padding for content */
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    background-color: transparent; /* Ensure no background is obscuring it */
+    overflow-x: hidden; /* Prevent horizontal scroll within hero */
+}
+
+.hero-svg {
+    max-width: 100%; /* Ensures it scales down on smaller screens */
+    height: auto;    /* Maintains aspect ratio */
+    display: block;  /* Removes extra space below inline elements */
+    /* Set a max-width if the SVG itself is very large and you want to cap its size */
+    /* max-width: 800px; */
+    /* margin: 0 auto; /* Center the SVG if max-width is set */
+}
+
+
+/* Footer Styles */
+.footer {
+    width: 100%;
+    background: #000316;
+    padding: 50px 20px;
+    color: #fff;
+    /* Remove position: relative and overflow: hidden if not needed for other effects */
+    /* position: relative; */
+    /* overflow: hidden; */
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    /* Add flex-wrap to allow columns to wrap on smaller screens */
+    flex-wrap: wrap;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 150px; /* Ensure columns don't shrink too much */
+}
+
+.footer-column h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #D3D8E0;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+    color: #A0AEC0;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s;
+}
+
+.footer-column ul li a:hover {
+    color: #fff;
+}
+
+.footer-logo {
+    /* Remove absolute positioning and let it flow with flex */
+    /* position: absolute; */
+    /* right: 20px; */
+    /* top: 50%; */
+    /* transform: translateY(-50%); */
+    margin-left: auto; /* Pushes it to the right within the flex container */
+    /* Ensure it doesn't cause overflow */
+    min-width: 100px; /* Or whatever its intrinsic width is */
+}
+
+.footer-logo-img {
+    width: 100px;
+    height: 100px;
+    margin-top: 0px;
+    /* margin-right: 80px; /* Keep this if you want internal spacing */
+}
+
+.footer-bottom {
+    max-width: 1200px;
+    margin: 30px auto 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-bottom p {
+    font-size: 12px;
+    color: #A0AEC0;
+    margin: 0;
+}
+
+.footer-links a {
+    color: #A0AEC0;
+    text-decoration: none;
+    font-size: 12px;
+    margin-left: 15px;
+    transition: color 0.2s;
+}
+
+.footer-links a:hover {
+    color: #fff;
+}
+
+.footer-social a {
+    color: #A0AEC0;
+    font-size: 16px;
+    margin-left: 15px;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer-social a:hover {
+    color: #fff;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        right: 0;
+        background-color: #fff;
+        padding: 20px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+
+    .burger-menu {
+        display: block;
+    }
+
+    .gwei-indicator {
+        margin-left: 10px;
+    }
+
+    /* Footer responsive adjustments */
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-column {
+        min-width: unset; /* Remove min-width on smaller screens */
+    }
+
+    .footer-logo {
+        margin-left: 0; /* Reset margin for centering */
+        margin-top: 20px; /* Add space between columns and logo */
+    }
+
+    .footer-logo-img {
+        margin-right: 0; /* Reset right margin on smaller screens */
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-links,
+    .footer-social {
+        margin-top: 10px;
+    }
+    .footer-links a,
+    .footer-social a {
+        margin: 0 8px; /* Adjust spacing for smaller screens */
+    }
+}
